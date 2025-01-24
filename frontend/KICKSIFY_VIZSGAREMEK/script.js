@@ -2,12 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Kicksify ready!");
 });
 
-// Mock termékek
-const products = [
-    { id: 1, name: "Men's Sneakers", price: 49.99, image: "images/men-shoes.jpg" },
-    { id: 2, name: "Women's Heels", price: 59.99, image: "images/women-shoes.jpg" },
-    { id: 3, name: "Kids' Trainers", price: 39.99, image: "images/kids-shoes.jpg" }
-];
 
 const cart = [];
 
