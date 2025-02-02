@@ -3,13 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const cart = JSON.parse(localStorage.getItem("cart")) || [];
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Kicksify ready!");
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const cartItemsContainer = document.querySelector(".cart-items");
     const cartCount = document.querySelector(".cart-count");
     const checkoutBtn = document.getElementById("checkout-btn");
     
     // Termék hozzáadása a kosárhoz
     function addToCart(productName, productPrice) {
+        cart = JSON.parse(localStorage.getItem("cart")) || [];
         const existingProduct = cart.find(item => item.name === productName);
         
         if (existingProduct) {
@@ -24,6 +27,7 @@ const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     // Kosár frissítése
     function updateCartUI() {
+        cart = JSON.parse(localStorage.getItem("cart")) || [];
         cartItemsContainer.innerHTML = "";
         let totalItems = 0;
         
@@ -47,6 +51,7 @@ const cart = JSON.parse(localStorage.getItem("cart")) || [];
         document.querySelectorAll(".remove-item").forEach(button => {
             button.addEventListener("click", function () {
                 const index = parseInt(this.getAttribute("data-index"));
+                cart = JSON.parse(localStorage.getItem("cart")) || [];
                 if (cart[index].quantity > 1) {
                     cart[index].quantity -= 1;
                 } else {
@@ -60,15 +65,66 @@ const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     // Kosár kiürítése és vásárlás
     checkoutBtn.addEventListener("click", function () {
+        cart = JSON.parse(localStorage.getItem("cart")) || [];
         if (cart.length === 0) {
             alert("Your cart is empty!");
             return;
         }
-        
-        alert("Thank you for your purchase!");
+
+        const email = localStorage.getItem("loggedInUser");
+        if (!email) {
+            const loginRequiredCard = document.createElement("div");
+            loginRequiredCard.style.position = "fixed";
+            loginRequiredCard.style.top = "50%";
+            loginRequiredCard.style.left = "50%";
+            loginRequiredCard.style.transform = "translate(-50%, -50%)";
+            loginRequiredCard.style.backgroundColor = "#fff";
+            loginRequiredCard.style.padding = "40px";
+            loginRequiredCard.style.border = "2px solid #000";
+            loginRequiredCard.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0.3)";
+            loginRequiredCard.style.zIndex = "1000";
+            loginRequiredCard.innerHTML = `
+                <h2 style="font-size: 1.8rem;">Login Required</h2>
+                <p style="font-size: 1.2rem;">Please log in to complete your purchase.</p>
+                <button id="close-login-required" class="btn btn-dark">Close</button>
+            `;
+            document.body.appendChild(loginRequiredCard);
+
+            document.getElementById("close-login-required").addEventListener("click", function () {
+                loginRequiredCard.remove();
+            });
+            return;
+        }
+
+        // Kosár kiürítése
         localStorage.removeItem("cart");
-        cart.length = 0;
+        cart = [];
         updateCartUI();
+
+        // Köszönőkártya megjelenítése
+        const thankYouCard = document.createElement("div");
+        thankYouCard.style.position = "fixed";
+        thankYouCard.style.top = "50%";
+        thankYouCard.style.left = "50%";
+        thankYouCard.style.transform = "translate(-50%, -50%)";
+        thankYouCard.style.backgroundColor = "#fff";
+        thankYouCard.style.padding = "40px";
+        thankYouCard.style.border = "2px solid #000";
+        thankYouCard.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0.3)";
+        thankYouCard.style.zIndex = "1000";
+        thankYouCard.innerHTML = `
+            <h2 style="font-size: 1.8rem;">Thank You for Your Purchase!</h2>
+            <p style="font-size: 1.2rem;">We hope to see you again soon!</p>
+            <p style="font-size: 1rem; color: #555;">Your invoice has been sent to your email.</p>
+            <button id="close-thank-you" class="btn btn-dark">Close</button>
+        `;
+        document.body.appendChild(thankYouCard);
+
+        // Bezárás esemény
+        document.getElementById("close-thank-you").addEventListener("click", function () {
+            thankYouCard.remove();
+            window.location.href = 'index.html'; // Visszairányítás a főoldalra
+        });
     });
 
     // Termék gombok eseménykezelése
@@ -82,6 +138,7 @@ const cart = JSON.parse(localStorage.getItem("cart")) || [];
     
     // Betöltéskor frissítjük a kosarat
     updateCartUI();
+});
 
 
 //SLIDESHOW
@@ -192,3 +249,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     updateAuthUI();
 });
+
