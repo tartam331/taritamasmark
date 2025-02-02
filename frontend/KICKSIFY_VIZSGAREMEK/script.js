@@ -126,4 +126,79 @@ document.querySelectorAll('.add-to-cart-button').forEach(button => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const loginBtn = document.getElementById("login-btn");
+    const registerBtn = document.getElementById("register-btn");
+    const logoutBtn = document.getElementById("logout-btn");
+    const authModalEl = document.getElementById("authModal");
+    const authModal = new bootstrap.Modal(authModalEl, {
+        backdrop: false,
+        keyboard: true
+    });
+    const authTitle = document.getElementById("authModalTitle");
+    const authForm = document.getElementById("authForm");
+    const authSection = document.getElementById("auth-section");
+    const profileDropdown = document.getElementById("profile-dropdown");
+    
+    let isLoggedIn = false;
+    let users = JSON.parse(localStorage.getItem("users")) || {};
 
+    loginBtn.addEventListener("click", function () {
+        authTitle.innerText = "Login";
+        authModal.show();
+    });
+
+    registerBtn.addEventListener("click", function () {
+        authTitle.innerText = "Register";
+        authModal.show();
+    });
+
+    authForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        
+        if (authTitle.innerText === "Register") {
+            if (users[email]) {
+                alert("This email is already registered!");
+            } else {
+                users[email] = password;
+                localStorage.setItem("users", JSON.stringify(users));
+                alert("Registration successful! Please log in.");
+                authModal.hide();
+            }
+        } else if (authTitle.innerText === "Login") {
+            if (users[email] && users[email] === password) {
+                isLoggedIn = true;
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("loggedInUser", email);
+                authModal.hide();
+                updateAuthUI();
+            } else {
+                alert("Invalid email or password.");
+            }
+        }
+    });
+
+    logoutBtn.addEventListener("click", function () {
+        isLoggedIn = false;
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("loggedInUser");
+        updateAuthUI();
+    });
+
+    function updateAuthUI() {
+        if (isLoggedIn) {
+            authSection.classList.add("d-none");
+            profileDropdown.classList.remove("d-none");
+        } else {
+            authSection.classList.remove("d-none");
+            profileDropdown.classList.add("d-none");
+        }
+    }
+
+    if (localStorage.getItem("isLoggedIn") === "true") {
+        isLoggedIn = true;
+    }
+    updateAuthUI();
+});
