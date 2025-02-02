@@ -3,69 +3,85 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const cart = [];
-
-// Termékek megjelenítése
-function displayProducts() {
-    const productList = document.getElementById('product-list');
-    productList.innerHTML = '';
-    products.forEach(product => {
-        productList.innerHTML += `
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text">$${product.price.toFixed(2)}</p>
-                        <button class="btn btn-primary" onclick="addToCart(${product.id})">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-}
-
-// Kosárba helyezés
-function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (product) {
-        cart.push(product);
-        displayCart();
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartItemsContainer = document.querySelector(".cart-items");
+    const cartCount = document.querySelector(".cart-count");
+    const checkoutBtn = document.getElementById("checkout-btn");
+    
+    // Termék hozzáadása a kosárhoz
+    function addToCart(productName, productPrice) {
+        const existingProduct = cart.find(item => item.name === productName);
+        
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cart.push({ name: productName, price: productPrice, quantity: 1 });
+        }
+        
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartUI();
     }
-}
 
-// Kosár megjelenítése
-function displayCart() {
-    const cartItems = document.getElementById('cart-items');
-    cartItems.innerHTML = '';
-    cart.forEach((item, index) => {
-        cartItems.innerHTML += `
-            <div class="list-group-item d-flex justify-content-between align-items-center">
-                ${item.name} - $${item.price.toFixed(2)}
-                <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Remove</button>
-            </div>
-        `;
+    // Kosár frissítése
+    function updateCartUI() {
+        cartItemsContainer.innerHTML = "";
+        let totalItems = 0;
+        
+        cart.forEach((item, index) => {
+            totalItems += item.quantity;
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+            cartItem.innerHTML = `
+                ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}
+                <button class="btn btn-danger btn-sm remove-item" data-index="${index}">Remove</button>
+            `;
+            cartItemsContainer.appendChild(cartItem);
+        });
+
+        cartCount.textContent = totalItems;
+        attachRemoveEvent();
+    }
+
+    // Termék eltávolítása a kosárból
+    function attachRemoveEvent() {
+        document.querySelectorAll(".remove-item").forEach(button => {
+            button.addEventListener("click", function () {
+                const index = parseInt(this.getAttribute("data-index"));
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    cart.splice(index, 1);
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+                updateCartUI();
+            });
+        });
+    }
+
+    // Kosár kiürítése és vásárlás
+    checkoutBtn.addEventListener("click", function () {
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+        
+        alert("Thank you for your purchase!");
+        localStorage.removeItem("cart");
+        cart.length = 0;
+        updateCartUI();
     });
-}
 
-// Eltávolítás a kosárból
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    displayCart();
-}
-
-// Kezdő funkciók betöltése
-document.addEventListener('DOMContentLoaded', () => {
-    displayCart();
-});
-
-// Checkout gomb esemény
-document.getElementById('checkout-btn').addEventListener('click', () => {
-    alert('Thank you for your purchase!');
-    cart.length = 0; // Kosár kiürítése
-    displayCart();
-});
-
+    // Termék gombok eseménykezelése
+    document.querySelectorAll(".add-to-cart").forEach(button => {
+        button.addEventListener("click", function () {
+            const productName = this.getAttribute("data-name");
+            const productPrice = parseFloat(this.getAttribute("data-price"));
+            addToCart(productName, productPrice);
+        });
+    });
+    
+    // Betöltéskor frissítjük a kosarat
+    updateCartUI();
 
 
 //SLIDESHOW
@@ -99,32 +115,6 @@ function showSlides(n) {
 setInterval(() => {
   changeSlide(1);
 }, 900); // 2 másodpercenként vált
-
-
-// Kosár hozzáadása (például egy gombnyomásra)
-function addToCart(productName) {
-    const cartItems = document.querySelector('.cart-items');
-    const cartCount = document.querySelector('.cart-count');
-  
-    // Hozzáadjuk a terméket a kosárhoz
-    const productElement = document.createElement('p');
-    productElement.textContent = productName;
-    cartItems.appendChild(productElement);
-  
-    // Frissítjük a kosár számot
-    let itemCount = parseInt(cartCount.textContent);
-    cartCount.textContent = itemCount + 1;
-}
-
-// Hozzáadunk eseménykezelőt az összes termékhez tartozó "Add to Cart" gombhoz
-document.querySelectorAll('.add-to-cart-button').forEach(button => {
-    button.addEventListener('click', function() {
-        // Kivesszük a termék nevét a kártyából
-        const productName = button.closest('.card').querySelector('.card-title').textContent;
-        // Kosárhoz adás
-        addToCart(productName);
-    });
-});
 
 document.addEventListener("DOMContentLoaded", function () {
     const loginBtn = document.getElementById("login-btn");
