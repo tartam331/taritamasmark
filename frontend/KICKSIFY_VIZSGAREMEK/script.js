@@ -56,7 +56,6 @@ function removeFromCart(index) {
 
 // Kezdő funkciók betöltése
 document.addEventListener('DOMContentLoaded', () => {
-    displayProducts();
     displayCart();
 });
 
@@ -99,7 +98,7 @@ function showSlides(n) {
 // Automatikus diaváltás (opcionális)
 setInterval(() => {
   changeSlide(1);
-}, 2000); // 2 másodpercenként vált
+}, 900); // 2 másodpercenként vált
 
 
 // Kosár hozzáadása (például egy gombnyomásra)
@@ -126,3 +125,5 @@ document.querySelectorAll('.add-to-cart-button').forEach(button => {
         addToCart(productName);
     });
 });
+
+

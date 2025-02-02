@@ -5,16 +5,25 @@ body {
 }
 
 .custom-header {
-  height: 50px; /* A kívánt magasság a header részhez */
-  background-color: black; /* Sötét háttérszín, hogy illeszkedjen a navbarhoz */
+  position: fixed;
+  top: 60px; /* A navbar magassága */
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.8); /* Áttetsző fekete háttér */
+  z-index: 999; /* A navbar alatt maradjon */
   text-align: center;
+  padding: 10px 0;
+  color: white;
 }
 
 .custom-header h1 {
-  font-size: 2.5rem; /* Igény szerinti méretezés */
+  font-size: 1.8rem;
   margin: 0;
-  line-height: 300px; /* Középre igazítás a header magasságán belül */
+  color: white;
+  text-transform: uppercase;
 }
+
 
 /* Slideshow */
 .slideshow-container {
@@ -299,3 +308,7 @@ body {
   .prev:hover, .next:hover {
     background: rgba(0, 0, 0, 0.7);
   }
+
+  .modal {
+    z-index: 1050 !important;
+}

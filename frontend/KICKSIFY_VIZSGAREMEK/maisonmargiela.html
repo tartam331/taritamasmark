@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maison Margiela Collection - Kicksify</title>
+    <title>Maison Margiela - Kicksify</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">Kicksify</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -17,60 +17,66 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#men">Men</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#women">Women</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nike.html">Nike</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adidas.html">Adidas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="jordan.html">Jordan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="maisonmargiela.html">Maison Margiela</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rickowens.html">Rick Owens</a></li>
+                    <li class="nav-item"><a class="nav-link" href="balenciaga.html">Balenciaga</a></li>
                 </ul>
             </div>
         </div>
-        <!-- Kosár tartalom (már létező HTML-ben) -->
-<div class="cart-container">
-    <span class="cart-icon">🛒</span>
-    <span class="cart-count">0</span> <!-- Kezdetben 0 elem -->
-    <div class="cart-items">
-        <!-- Kosár elemek itt jelennek meg -->
-    </div>
-</div>
     </nav>
 
-    <!-- Custom Header for Nike -->
-    <header class="custom-header text-white d-flex justify-content-center align-items-center" style="background: url('images/nike-banner.jpg') no-repeat center center; background-size: cover;">
-        <h1 class="text-uppercase">Nike Collection</h1>
-    </header>
+    <!-- Maison Margiela Brand Section -->
+    <section class="container py-5">
+        <img src="images/maisonmargiela_slideshow.png" class="d-block mx-auto my-4" style="max-width: 300px;">
+        <p class="text-center">
+            A **Maison Margiela** egy luxus divatmárka, amely a különleges dizájnjairól híres.  
+            A legismertebb modellek közé tartozik a **Replica Sneaker, Tabi Boot és Fusion Sneaker**.
+        </p>
+        
+    </section>
 
-    <!-- Nike Products Section -->
-    <section id="nike-products" class="container py-5">
-        <h2 class="text-center mb-4">Explore Maison Margiela Shoes</h2>
+    <!-- Maison Margiela Products -->
+    <section class="container py-5">
+        <h2 class="text-center mb-4">Maison Margiela Termékek</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="card">
-                <img src="images/nike-shoe1.png" class="card-img-top" alt="Nike Air Max">
-                <div class="card-body">
-                    <h5 class="card-title">Nike Air Max</h5>
-                    <p class="card-text">Comfortable and stylish, perfect for running or casual wear.</p>
-                    <button class="btn btn-dark add-to-cart-button">Add to Cart</button> <!-- Button to add to cart -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/maison_replica.jpg" class="card-img-top" alt="Replica Sneaker">
+                    <div class="card-body">
+                        <h5 class="card-title">Replica Sneaker</h5>
+                        <p class="card-text">Klasszikus, letisztult dizájn bőrből.</p>
+                        <button class="btn btn-dark add-to-cart" data-name="Replica Sneaker" data-price="400">Kosárba</button>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <img src="images/nike-shoe1.png" class="card-img-top" alt="Nike Air Max">
-                <div class="card-body">
-                    <h5 class="card-title">Nike Air Max</h5>
-                    <p class="card-text">Comfortable and stylish, perfect for running or casual wear.</p>
-                    <button class="btn btn-dark add-to-cart-button">Add to Cart</button> <!-- Button to add to cart -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/maison_tabi.jpg" class="card-img-top" alt="Tabi Boot">
+                    <div class="card-body">
+                        <h5 class="card-title">Tabi Boot</h5>
+                        <p class="card-text">A híres osztott orrú csizma.</p>
+                        <button class="btn btn-dark add-to-cart" data-name="Tabi Boot" data-price="900">Kosárba</button>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <img src="images/nike-shoe1.png" class="card-img-top" alt="Nike Air Max">
-                <div class="card-body">
-                    <h5 class="card-title">Nike Air Max</h5>
-                    <p class="card-text">Comfortable and stylish, perfect for running or casual wear.</p>
-                    <button class="btn btn-dark add-to-cart-button">Add to Cart</button> <!-- Button to add to cart -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/maison_fusion.jpg" class="card-img-top" alt="Fusion Sneaker">
+                    <div class="card-body">
+                        <h5 class="card-title">Fusion Sneaker</h5>
+                        <p class="card-text">Extravagáns, „szétesett” dizájn.</p>
+                        <button class="btn btn-dark add-to-cart" data-name="Fusion Sneaker" data-price="1200">Kosárba</button>
+                    </div>
                 </div>
             </div>
-            <!-- More Nike products can be added here -->
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-light text-center py-4">
+    <footer class="text-center py-4 bg-light">
         <p>&copy; 2024 Kicksify. All rights reserved.</p>
     </footer>
 

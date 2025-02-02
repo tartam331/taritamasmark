@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jordan Collection - Kicksify</title>
+    <title>Air Jordan - Kicksify</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">Kicksify</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -17,60 +17,66 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#men">Men</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#women">Women</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nike.html">Nike</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adidas.html">Adidas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="jordan.html">Jordan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="maisonmargiela.html">Maison Margiela</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rickowens.html">Rick Owens</a></li>
+                    <li class="nav-item"><a class="nav-link" href="balenciaga.html">Balenciaga</a></li>
                 </ul>
             </div>
         </div>
-        <!-- Kosár tartalom (már létező HTML-ben) -->
-<div class="cart-container">
-    <span class="cart-icon">🛒</span>
-    <span class="cart-count">0</span> <!-- Kezdetben 0 elem -->
-    <div class="cart-items">
-        <!-- Kosár elemek itt jelennek meg -->
-    </div>
-</div>
     </nav>
 
-    <!-- Custom Header for Nike -->
-    <header class="custom-header text-white d-flex justify-content-center align-items-center" style="background: url('images/nike-banner.jpg') no-repeat center center; background-size: cover;">
-        <h1 class="text-uppercase">Jordan Collection</h1>
-    </header>
+    <!-- Jordan Brand Section -->
+    <section class="container py-5">
+        <img src="images/jordan.png" class="d-block mx-auto my-4" style="max-width: 300px;">
+        <p class="text-center">
+            Az **Air Jordan** egy ikonikus cipőmárka, amelyet Michael Jordan és a Nike együttműködésében hoztak létre.
+            A legismertebb modellek közé tartozik az **Air Jordan 1, Air Jordan 4 és Air Jordan 11**.
+        </p>
+        
+    </section>
 
-    <!-- Nike Products Section -->
-    <section id="nike-products" class="container py-5">
-        <h2 class="text-center mb-4">Explore Jordan Shoes</h2>
+    <!-- Jordan Products -->
+    <section class="container py-5">
+        <h2 class="text-center mb-4">Air Jordan Termékek</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="card">
-                <img src="images/nike-shoe1.png" class="card-img-top" alt="Nike Air Max">
-                <div class="card-body">
-                    <h5 class="card-title">Nike Air Max</h5>
-                    <p class="card-text">Comfortable and stylish, perfect for running or casual wear.</p>
-                    <button class="btn btn-dark add-to-cart-button">Add to Cart</button> <!-- Button to add to cart -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/jordan1.jpg" class="card-img-top" alt="Air Jordan 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Air Jordan 1</h5>
+                        <p class="card-text">Az első Air Jordan cipő, amely örök klasszikus.</p>
+                        <button class="btn btn-dark add-to-cart" data-name="Air Jordan 1" data-price="180">Kosárba</button>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <img src="images/nike-shoe1.png" class="card-img-top" alt="Nike Air Max">
-                <div class="card-body">
-                    <h5 class="card-title">Nike Air Max</h5>
-                    <p class="card-text">Comfortable and stylish, perfect for running or casual wear.</p>
-                    <button class="btn btn-dark add-to-cart-button">Add to Cart</button> <!-- Button to add to cart -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/jordan4.jpg" class="card-img-top" alt="Air Jordan 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Air Jordan 4</h5>
+                        <p class="card-text">Prémium anyagok és ikonikus dizájn.</p>
+                        <button class="btn btn-dark add-to-cart" data-name="Air Jordan 4" data-price="200">Kosárba</button>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <img src="images/nike-shoe1.png" class="card-img-top" alt="Nike Air Max">
-                <div class="card-body">
-                    <h5 class="card-title">Nike Air Max</h5>
-                    <p class="card-text">Comfortable and stylish, perfect for running or casual wear.</p>
-                    <button class="btn btn-dark add-to-cart-button">Add to Cart</button> <!-- Button to add to cart -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/jordan11.jpg" class="card-img-top" alt="Air Jordan 11">
+                    <div class="card-body">
+                        <h5 class="card-title">Air Jordan 11</h5>
+                        <p class="card-text">Michael Jordan egyik kedvenc cipője.</p>
+                        <button class="btn btn-dark add-to-cart" data-name="Air Jordan 11" data-price="220">Kosárba</button>
+                    </div>
                 </div>
             </div>
-            <!-- More Nike products can be added here -->
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-light text-center py-4">
+    <footer class="text-center py-4 bg-light">
         <p>&copy; 2024 Kicksify. All rights reserved.</p>
     </footer>
 
