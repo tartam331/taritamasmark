@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balenciaga Collection - Kicksify</title>
+    <title>Balenciaga - Kicksify</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">Kicksify</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -17,64 +17,79 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#men">Men</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#women">Women</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nike.html">Nike</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adidas.html">Adidas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="jordan.html">Jordan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="maisonmargiela.html">Maison Margiela</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rickowens.html">Rick Owens</a></li>
+                    <li class="nav-item"><a class="nav-link" href="balenciaga.html">Balenciaga</a></li>
                 </ul>
             </div>
         </div>
-        <!-- Kosár tartalom (már létező HTML-ben) -->
-<div class="cart-container">
-    <span class="cart-icon">🛒</span>
-    <span class="cart-count">0</span> <!-- Kezdetben 0 elem -->
-    <div class="cart-items">
-        <!-- Kosár elemek itt jelennek meg -->
-    </div>
-</div>
+        <div class="cart-container">
+            <span class="cart-icon">🛒</span>
+            <span class="cart-count">0</span>
+            <div class="cart-items">
+                <!-- Kosár tételek itt jelennek meg -->
+            </div>
+        </div>
+        <button id="checkout-btn" class="btn btn-dark">Checkout</button>
     </nav>
 
-    <!-- Custom Header for Nike -->
-    <header class="custom-header text-white d-flex justify-content-center align-items-center" style="background: url('images/nike-banner.jpg') no-repeat center center; background-size: cover;">
-        <h1 class="text-uppercase">Balenciaga Collection</h1>
-    </header>
+    <!-- Balenciaga Brand Section -->
+    <section class="container py-5">
+        <img src="images/balenciaga.png" class="d-block mx-auto my-4" style="max-width: 300px;">
+        <p class="text-center">
+            A **Balenciaga** a modern divat egyik legmeghatározóbb márkája, amely merész és egyedi dizájnokat alkot.  
+            A legismertebb modellek közé tartozik a **Triple S, Speed Trainer és Track Sneaker**.
+        </p>
+        
+    </section>
 
-    <!-- Nike Products Section -->
-    <section id="nike-products" class="container py-5">
-        <h2 class="text-center mb-4">Explore Balenciaga Shoes</h2>
+    <!-- Balenciaga Products -->
+    <section class="container py-5">
+        <h2 class="text-center mb-4">Termékek</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="card">
-                <img src="images/nike-shoe1.png" class="card-img-top" alt="Nike Air Max">
-                <div class="card-body">
-                    <h5 class="card-title">Nike Air Max</h5>
-                    <p class="card-text">Comfortable and stylish, perfect for running or casual wear.</p>
-                    <button class="btn btn-dark add-to-cart-button">Add to Cart</button> <!-- Button to add to cart -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/balenciaga_triples.jpg" class="card-img-top" alt="Triple S">
+                    <div class="card-body">
+                        <h5 class="card-title">Triple S</h5>
+                        <p class="card-text">A híres, vastag talpú sneaker, amely a divatvilágot forradalmasította.</p>
+                        <button class="btn btn-dark add-to-cart" data-name="Triple S" data-price="1000">Kosárba</button>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <img src="images/nike-shoe1.png" class="card-img-top" alt="Nike Air Max">
-                <div class="card-body">
-                    <h5 class="card-title">Nike Air Max</h5>
-                    <p class="card-text">Comfortable and stylish, perfect for running or casual wear.</p>
-                    <button class="btn btn-dark add-to-cart-button">Add to Cart</button> <!-- Button to add to cart -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/balenciaga_speed.jpg" class="card-img-top" alt="Speed Trainer">
+                    <div class="card-body">
+                        <h5 class="card-title">Speed Trainer</h5>
+                        <p class="card-text">A zokniszerű kialakítás és könnyű szerkezet garantálja a kényelmet.</p>
+                        <button class="btn btn-dark add-to-cart" data-name="Speed Trainer" data-price="850">Kosárba</button>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <img src="images/nike-shoe1.png" class="card-img-top" alt="Nike Air Max">
-                <div class="card-body">
-                    <h5 class="card-title">Nike Air Max</h5>
-                    <p class="card-text">Comfortable and stylish, perfect for running or casual wear.</p>
-                    <button class="btn btn-dark add-to-cart-button">Add to Cart</button> <!-- Button to add to cart -->
+            <div class="col">
+                <div class="card">
+                    <img src="images/balenciaga_track.jpg" class="card-img-top" alt="Track Sneaker">
+                    <div class="card-body">
+                        <h5 class="card-title">Track Sneaker</h5>
+                        <p class="card-text">Futócipő inspirált dizájn, amely a technológiai innováció és a streetwear tökéletes kombinációja.</p>
+                        <button class="btn btn-dark add-to-cart" data-name="Track Sneaker" data-price="900">Kosárba</button>
+                    </div>
                 </div>
             </div>
-            <!-- More Nike products can be added here -->
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-light text-center py-4">
+    <footer class="text-center py-4 bg-light">
         <p>&copy; 2024 Kicksify. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </body>
 </html>
