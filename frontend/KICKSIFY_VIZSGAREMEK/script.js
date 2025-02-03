@@ -247,5 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (localStorage.getItem("isLoggedIn") === "true") {
         isLoggedIn = true;
     }
-    updateAuthUI();
+    updateAuthUI()
+
 });
